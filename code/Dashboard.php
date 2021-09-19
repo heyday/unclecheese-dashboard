@@ -129,7 +129,7 @@ class Dashboard extends LeftAndMain implements PermissionProvider {
 		}
 		if($panel && ($panel->canEdit() || $panel->canView())) {
 			$requestClass = $panel->getRequestHandlerClass();
-			$handler = Object::create($requestClass, $this, $panel);				
+                       $handler = Injector::inst()->create($requestClass, $this, $panel);
 			return $handler->handleRequest($r, DataModel::inst());
 
 		}
